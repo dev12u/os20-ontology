@@ -6,7 +6,7 @@ Semantic vocabulary for OS20 Systems as Code: compiler, runtime, type compatibil
 - Docs: [`docs/ontology/README.md`](docs/ontology/README.md)
 
 ```text
-git clone https://github.com/dev13ha/os20-ontology.git
+git clone https://github.com/dev12u/os20-ontology.git
 cd os20-ontology
 cargo test --workspace
 ```
