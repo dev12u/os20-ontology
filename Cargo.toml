@@ -1,0 +1,25 @@
+[workspace]
+resolver = "2"
+members = ["crates/os20-ontology-core", "crates/os20-sdk"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "Apache-2.0"
+authors = ["OS20 Contributors"]
+homepage = "https://os20.org"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+thiserror = "2"
+tempfile = "3"
+os20-ontology-core = { path = "crates/os20-ontology-core" }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
