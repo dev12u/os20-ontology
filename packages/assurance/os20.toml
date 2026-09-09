@@ -1,0 +1,8 @@
+[package]
+name = "@os20/assurance"
+version = "0.1.0"
+edition = "2026"
+role = "ontology"
+
+[dependencies]
+engineering = "@os20/engineering@^0.1"

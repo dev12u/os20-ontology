@@ -377,6 +377,9 @@ fn malformed_bound_element_does_not_panic() {
         split_into: vec![],
         lifecycle: os20_ontology_core::LifecycleStatus::Active,
         comment: None,
+        inverse: None,
+        transitive: false,
+        symmetric: false,
         file: "../escape.sysml".into(),
         span: os20_ontology_core::SourceSpan::default(),
     });

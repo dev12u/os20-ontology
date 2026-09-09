@@ -12,6 +12,7 @@ mod compiler;
 mod derived;
 mod diagnostics;
 mod diff;
+mod engineering;
 mod evolution;
 mod explain;
 mod fingerprint;
@@ -44,6 +45,13 @@ pub use compiler::{
 pub use derived::{DerivedIndexError, DerivedOntologyIndex, reindex};
 pub use diagnostics::{DiagnosticCode, OntologyDiagnostic, RelatedLocation};
 pub use diff::{OntologyChange, OntologyDiff, OntologyDiffKind, SemVerAdvice, ontology_diff};
+pub use engineering::{
+    ArtifactRef, EngineeringGraph, EngineeringNode, EngineeringPropertyValue, GraphEdge,
+    JsonLdDocument, Query, QueryAnswer, RelationAuthorship, RelationDecl, canonical_relations,
+    compile_engineering_v1, electric_powertrain_graph, engineering_compile_request,
+    engineering_graphs, engineering_manifests, engineering_packages, query, relation, relation_id,
+    to_jsonld, validate_engineering_graph,
+};
 pub use evolution::{
     AbsenceKind, EvolutionEdge, EvolutionKind, RefactoringMap, UnallocatedPattern,
 };
@@ -94,8 +102,9 @@ pub use source_tree::{
     RecordingRegistry, SourceTreeError,
 };
 pub use versions::{
-    FINGERPRINT_PACKAGE, FINGERPRINT_SEMANTIC, FINGERPRINT_SOURCE, KERML_STDLIB_SUBSET_VERSION,
-    LANGUAGE_FRONTEND_VERSION_SLOT, MAX_ONTOLOGY_DIAGNOSTICS, MAX_SPECIALIZE_VISIT,
-    ONTOLOGY_RUNTIME_FORMAT_VERSION, OS20_CORE_ONTOLOGY_VERSION, PRODUCT_REPORT_SCHEMA,
-    RELEASE_DESCRIPTOR_SCHEMA_SLOT, RESOLVER_SEMANTICS_VERSION_SLOT,
+    ENGINEERING_GRAPH_SCHEMA, FINGERPRINT_PACKAGE, FINGERPRINT_SEMANTIC, FINGERPRINT_SOURCE,
+    KERML_STDLIB_SUBSET_VERSION, LANGUAGE_FRONTEND_VERSION_SLOT, MAX_ONTOLOGY_DIAGNOSTICS,
+    MAX_SPECIALIZE_VISIT, ONTOLOGY_RUNTIME_FORMAT_VERSION, OS20_CORE_ONTOLOGY_VERSION,
+    OS20_ENGINEERING_ONTOLOGY_VERSION, PRODUCT_REPORT_SCHEMA, RELEASE_DESCRIPTOR_SCHEMA_SLOT,
+    RESOLVER_SEMANTICS_VERSION_SLOT,
 };

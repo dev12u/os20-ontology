@@ -1,0 +1,18 @@
+[package]
+name = "@os20/powertrain"
+version = "0.1.0"
+edition = "2026"
+role = "library"
+
+[dependencies]
+engineering = "@os20/engineering@^0.1"
+physical = "@os20/physical@^0.1"
+assurance = "@os20/assurance@^0.1"
+analysis = "@os20/analysis@^0.1"
+lifecycle = "@os20/lifecycle@^0.1"
+software = "@os20/software@^0.1"
+
+[ontology]
+core = "@os20/core@^0.1"
+engineering = "@os20/engineering@^0.1"
+physical = "@os20/physical@^0.1"

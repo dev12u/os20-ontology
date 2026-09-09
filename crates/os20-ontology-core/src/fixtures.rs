@@ -30,6 +30,9 @@ fn el(
         split_into: vec![],
         lifecycle: crate::package::LifecycleStatus::Active,
         comment: None,
+        inverse: None,
+        transitive: false,
+        symmetric: false,
         file: file.into(),
         span: SourceSpan { start: 0, end: 32 },
     }

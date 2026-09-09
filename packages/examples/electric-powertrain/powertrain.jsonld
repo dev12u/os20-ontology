@@ -1,0 +1,81 @@
+{
+  "@context": {
+    "os20": "https://os20.org/ns/engineering/v1#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "@vocab": "https://os20.org/ns/engineering/v1#",
+    "instanceOf": { "@id": "os20:instanceOf", "@type": "@id" },
+    "contains": { "@id": "https://os20.org/id/@os20/core#contains", "@type": "@id" },
+    "hasGeometry": { "@id": "os20:hasGeometry", "@type": "@id" },
+    "hasBehavior": { "@id": "os20:hasBehavior", "@type": "@id" },
+    "hasPort": { "@id": "os20:hasPort", "@type": "@id" },
+    "hasProperty": { "@id": "os20:hasProperty", "@type": "@id" },
+    "madeOf": { "@id": "os20:madeOf", "@type": "@id" },
+    "allocatedTo": { "@id": "os20:allocatedTo", "@type": "@id" },
+    "verifiedBy": { "@id": "os20:verifiedBy", "@type": "@id" },
+    "simulates": { "@id": "os20:simulates", "@type": "@id" },
+    "representedBy": { "@id": "os20:representedBy", "@type": "@id" },
+    "providesEvidenceFor": { "@id": "os20:providesEvidenceFor", "@type": "@id" },
+    "generatedBy": { "@id": "prov:wasGeneratedBy", "@type": "@id" }
+  },
+  "@graph": [
+    {
+      "@id": "@os20/powertrain#TractionMotorDef",
+      "@type": "@os20/physical#TractionMotorDefinition",
+      "providedByPackage": "@supplier/motor"
+    },
+    {
+      "@id": "@os20/powertrain#TractionMotor",
+      "@type": "@os20/engineering#DeviceInstance",
+      "instanceOf": "@os20/physical#TractionMotorDefinition",
+      "hasGeometry": { "@id": "@os20/powertrain#TractionMotorGeometry" },
+      "madeOf": { "@id": "@os20/powertrain#ElectricalSteel" },
+      "hasBehavior": { "@id": "@os20/powertrain#MotorBehavior" },
+      "hasPort": [
+        { "@id": "@os20/powertrain#ShaftPort" },
+        { "@id": "@os20/powertrain#HVPort" }
+      ],
+      "hasProperty": { "@id": "@os20/powertrain#RatedTorque" }
+    },
+    {
+      "@id": "@os20/powertrain#TractionMotorGeometry",
+      "@type": "@os20/physical#SolidGeometry",
+      "representedBy": { "@id": "@os20/powertrain#MotorStepArtifact" }
+    },
+    {
+      "@id": "@os20/powertrain#MotorStepArtifact",
+      "@type": "@os20/lifecycle#GeometryArtifact",
+      "artifactDigest": {
+        "@id": "artifact:sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "format": "step"
+      }
+    },
+    {
+      "@id": "@os20/powertrain#RatedTorque",
+      "@type": "@os20/engineering#QuantityProperty",
+      "quantityKind": "@os20/physical#Torque",
+      "unit": "N.m",
+      "value": "250",
+      "origin": "calculated"
+    },
+    {
+      "@id": "@os20/powertrain#TorqueRequirement",
+      "@type": "@os20/assurance#PerformanceRequirement",
+      "statement": "Motor shall provide at least 20 Nm",
+      "allocatedTo": { "@id": "@os20/powertrain#TractionMotor" },
+      "verifiedBy": { "@id": "@os20/powertrain#DynoTestDef" }
+    },
+    {
+      "@id": "@os20/powertrain#ThermalSimDef",
+      "@type": "@os20/analysis#ThermalSimulation",
+      "simulates": { "@id": "@os20/powertrain#TractionMotor" }
+    },
+    {
+      "@id": "@os20/powertrain#DynoTestResult",
+      "@type": "@os20/assurance#TestResult",
+      "generatedBy": { "@id": "@os20/powertrain#DynoTestExec" },
+      "providesEvidenceFor": { "@id": "@os20/powertrain#TorqueRequirement" }
+    }
+  ]
+}

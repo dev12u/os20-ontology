@@ -83,6 +83,15 @@ pub struct BoundElement {
     /// Comment (semantic no-op).
     #[serde(default)]
     pub comment: Option<String>,
+    /// Inverse predicate local name or `@pkg#Name` (predicates only).
+    #[serde(default)]
+    pub inverse: Option<String>,
+    /// Transitive algebra (predicates only). Handlers remain Rust.
+    #[serde(default)]
+    pub transitive: bool,
+    /// Symmetric algebra (predicates only).
+    #[serde(default)]
+    pub symmetric: bool,
     /// Package-relative file.
     pub file: String,
     /// Span in that file.

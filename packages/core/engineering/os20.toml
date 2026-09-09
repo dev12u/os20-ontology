@@ -1,0 +1,9 @@
+[package]
+name = "@os20/engineering"
+version = "0.1.0"
+edition = "2026"
+role = "ontology"
+
+[dependencies]
+core = "@os20/core@^0.1"
+physics = "@os20/physics@^0.1"

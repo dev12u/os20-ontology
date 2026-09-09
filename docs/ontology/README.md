@@ -13,6 +13,8 @@ OS20 ontology is the **semantic vocabulary of Systems as Code**.
 
 Canonical contract: [ontology-spec-v1.md](../ontology-spec-v1.md)
 
+Engineering domain vocabulary (v1): [engineering/README.md](../engineering/README.md)
+
 | Topic | Doc |
 | --- | --- |
 | Architecture | [architecture.md](architecture.md) |

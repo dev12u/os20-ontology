@@ -60,6 +60,41 @@ impl PackageId {
         Self::new("@os20/behaviour").expect("catalog package")
     }
 
+    /// `@os20/engineering` v1 core vocabulary.
+    pub fn os20_engineering() -> Self {
+        Self::new("@os20/engineering").expect("catalog package")
+    }
+
+    /// `@os20/physical` geometry / materials / thermal / electrical structure.
+    pub fn os20_physical() -> Self {
+        Self::new("@os20/physical").expect("catalog package")
+    }
+
+    /// `@os20/software` embedded/software vocabulary.
+    pub fn os20_software() -> Self {
+        Self::new("@os20/software").expect("catalog package")
+    }
+
+    /// `@os20/assurance` requirements / test / safety classifications.
+    pub fn os20_assurance() -> Self {
+        Self::new("@os20/assurance").expect("catalog package")
+    }
+
+    /// `@os20/analysis` simulation and engineering analysis.
+    pub fn os20_analysis() -> Self {
+        Self::new("@os20/analysis").expect("catalog package")
+    }
+
+    /// `@os20/lifecycle` manufacturing, artifact roles, tools.
+    pub fn os20_lifecycle() -> Self {
+        Self::new("@os20/lifecycle").expect("catalog package")
+    }
+
+    /// Example model package (not an ontology role).
+    pub fn os20_powertrain() -> Self {
+        Self::new("@os20/powertrain").expect("catalog package")
+    }
+
     /// Vendored KerML scalar library package.
     pub fn omg_kerml() -> Self {
         Self::new("@omg/kerml").expect("catalog package")

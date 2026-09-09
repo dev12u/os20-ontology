@@ -629,8 +629,17 @@ fn compile_one(
                         source_type: src,
                         target_type: tgt,
                         cardinality: None,
-                        inverse: None,
-                        algebra: RelationAlgebra::default(),
+                        inverse: el.inverse.as_ref().and_then(|inv| {
+                            if inv.contains('#') {
+                                PredicateId::new(inv).ok()
+                            } else {
+                                Some(PredicateId::catalog(&pkg, inv))
+                            }
+                        }),
+                        algebra: RelationAlgebra {
+                            symmetric: el.symmetric,
+                            transitive: el.transitive,
+                        },
                         domains: domain_ids.clone(),
                     },
                 },

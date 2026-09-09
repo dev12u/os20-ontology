@@ -342,6 +342,9 @@ fn unrelated_cache_valid_when_electrical_changes() {
             split_into: vec![],
             lifecycle: os20_ontology_core::LifecycleStatus::Active,
             comment: None,
+            inverse: None,
+            transitive: false,
+            symmetric: false,
             file: "Electrical.sysml".into(),
             span: os20_ontology_core::SourceSpan { start: 0, end: 1 },
         });
@@ -470,6 +473,9 @@ fn protected_redefinition() {
         split_into: vec![],
         lifecycle: os20_ontology_core::LifecycleStatus::Active,
         comment: None,
+        inverse: None,
+        transitive: false,
+        symmetric: false,
         file: "Hack.sysml".into(),
         span: os20_ontology_core::SourceSpan::default(),
     });
@@ -605,6 +611,9 @@ fn private_not_in_find_types_public_api() {
         split_into: vec![],
         lifecycle: os20_ontology_core::LifecycleStatus::Active,
         comment: None,
+        inverse: None,
+        transitive: false,
+        symmetric: false,
         file: "Hidden.sysml".into(),
         span: os20_ontology_core::SourceSpan::default(),
     });
@@ -645,6 +654,9 @@ fn compile_10k_types() {
         split_into: vec![],
         lifecycle: os20_ontology_core::LifecycleStatus::Active,
         comment: None,
+        inverse: None,
+        transitive: false,
+        symmetric: false,
         file: "G.sysml".into(),
         span: os20_ontology_core::SourceSpan::default(),
     });
@@ -665,6 +677,9 @@ fn compile_10k_types() {
             split_into: vec![],
             lifecycle: os20_ontology_core::LifecycleStatus::Active,
             comment: None,
+            inverse: None,
+            transitive: false,
+            symmetric: false,
             file: "G.sysml".into(),
             span: os20_ontology_core::SourceSpan::default(),
         });

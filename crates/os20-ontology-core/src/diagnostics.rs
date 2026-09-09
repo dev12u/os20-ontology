@@ -41,6 +41,28 @@ pub enum DiagnosticCode {
     QuantityDimensionMismatch,
     /// Relation endpoint not allowed by the predicate (`OS20-E4015`).
     IllegalRelationEndpoint,
+    /// `instanceOf` target is not an engineering definition (`OS20-E4016`).
+    InstanceOfNotDefinition,
+    /// Instance uses Specialize instead of `instanceOf` (`OS20-E4017`).
+    InstanceSpecializesDefinition,
+    /// Structural `contains` cycle (`OS20-E4018`).
+    CompositionCycle,
+    /// Port connection fails kind/direction/flow checks (`OS20-E4019`).
+    PortIncompatible,
+    /// Configuration `incompatibleWith` / `excludes` violated (`OS20-E4020`).
+    ConfigurationIncompatible,
+    /// Edge or property references an unknown id (`OS20-E4021`).
+    DanglingSemanticId,
+    /// Engineering graph schema is unknown — fail closed (`OS20-E4022`).
+    UnknownEngineeringSchema,
+    /// SimulationResult does not reference a SimulationRun (`OS20-E4023`).
+    SimulationResultMissingRun,
+    /// TestResult does not reference a TestExecution (`OS20-E4024`).
+    TestResultMissingExecution,
+    /// Artifact role/format is incompatible with the semantic object (`OS20-E4025`).
+    ArtifactRoleMismatch,
+    /// Declared package export is not a known type (`OS20-E4026`).
+    MissingPackageExport,
     /// Comment-only / advisory (`OS20-W4001`).
     CommentOnlyChange,
 }
@@ -64,6 +86,17 @@ impl DiagnosticCode {
             Self::IncompatibleAssignment => "OS20-E4013",
             Self::QuantityDimensionMismatch => "OS20-E4014",
             Self::IllegalRelationEndpoint => "OS20-E4015",
+            Self::InstanceOfNotDefinition => "OS20-E4016",
+            Self::InstanceSpecializesDefinition => "OS20-E4017",
+            Self::CompositionCycle => "OS20-E4018",
+            Self::PortIncompatible => "OS20-E4019",
+            Self::ConfigurationIncompatible => "OS20-E4020",
+            Self::DanglingSemanticId => "OS20-E4021",
+            Self::UnknownEngineeringSchema => "OS20-E4022",
+            Self::SimulationResultMissingRun => "OS20-E4023",
+            Self::TestResultMissingExecution => "OS20-E4024",
+            Self::ArtifactRoleMismatch => "OS20-E4025",
+            Self::MissingPackageExport => "OS20-E4026",
             Self::CommentOnlyChange => "OS20-W4001",
         }
     }

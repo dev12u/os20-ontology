@@ -44,3 +44,9 @@ pub const MAX_SPECIALIZE_VISIT: usize = 1_048_576;
 
 /// Cap stored diagnostics so a hostile package cannot unbounded-allocate reports.
 pub const MAX_ONTOLOGY_DIAGNOSTICS: usize = 16_384;
+
+/// Engineering instance-graph schema. Unknown versions fail closed (`OS20-E4022`).
+pub const ENGINEERING_GRAPH_SCHEMA: u32 = 1;
+
+/// SemVer of the OS20 engineering ontology packages (`@os20/engineering`, …).
+pub const OS20_ENGINEERING_ONTOLOGY_VERSION: &str = "0.1.0";
