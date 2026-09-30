@@ -1,3 +1,13 @@
+# Archived
+
+This repository is archived. The live copy is in the runtime repository `os20`:
+
+- production ontology crate: `os20/crates/os20-ontology`
+- domain packages: `os20/ontologies/`
+- ontology-track engine: `os20/ontology-track/` (not linked by the SDK façade)
+
+Do not add a second production ontology implementation here.
+
 # OS20 ontology
 
 Semantic vocabulary for OS20 Systems as Code: compiler, runtime, type compatibility, predicates, domains, evolution, and SDK façade.
