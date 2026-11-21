@@ -85,7 +85,7 @@ fn mixin_does_not_alter_ancestry() {
     let props = sdk
         .ontology()
         .properties(&tid("@os20/electrical#ServoMotor"));
-    assert!(props.iter().any(|p| p.id.as_str().ends_with("#mass")));
+    assert!(props.iter().any(|p| p.id.as_str().ends_with("#MassBearing.mass")));
 }
 
 #[test]
@@ -94,12 +94,12 @@ fn inherited_property_resolved() {
     let props = sdk
         .ontology()
         .properties(&tid("@os20/electrical#ServoMotor"));
-    assert!(props.iter().any(|p| p.id.as_str().ends_with("#position")));
+    assert!(props.iter().any(|p| p.id.as_str().ends_with("#PhysicalThing.position")));
     assert!(
         props
             .iter()
             .any(|p| p.declared_by.as_str() == "@os20/core#PhysicalThing"
-                || p.id.as_str().ends_with("#mass"))
+                || p.id.as_str().ends_with("#MassBearing.mass"))
     );
 }
 

@@ -29,6 +29,7 @@ mod refactor;
 mod relations;
 mod resolver_bridge;
 mod runtime;
+mod semantic_property;
 mod snapshot;
 mod source_graph;
 mod source_tree;
@@ -92,6 +93,11 @@ pub use relations::{
 };
 pub use resolver_bridge::SemanticResolverOntology;
 pub use runtime::{Ontology, OntologyRuntime};
+pub use semantic_property::{
+    ResolvedSemanticProperty, SemanticPropertyBinding, SemanticPropertyDef,
+    SemanticPropertyDisplay, SemanticPropertyId, SemanticPropertyRegistry,
+    normalize_feature_key, quantity_kinds_compatible,
+};
 pub use snapshot::{OntologyPackage, OntologySnapshot, OntologySnapshotBuilder};
 pub use source_graph::{
     BoundElement, BoundFeature, BoundRelation, BoundSourceGraph, FileComment, MovedDefinition,

@@ -118,9 +118,9 @@ fn type_decl(
     }
 }
 
-fn prop(local: &str, ty: TypeId, pkg: &PackageId) -> PropertyDecl {
+fn prop(owner: &str, local: &str, ty: TypeId, pkg: &PackageId) -> PropertyDecl {
     PropertyDecl {
-        id: PropertyId::catalog(pkg, local),
+        id: PropertyId::on_owner(pkg, owner, local),
         ty: TypeRef::Bound { id: ty },
         multiplicity: Some(Multiplicity {
             lower: 0,
@@ -298,7 +298,7 @@ fn build_core_snapshot(thing_comment: Option<&str>) -> OntologySnapshot {
             &[],
             &[],
             &["Physics"],
-            vec![prop("mass", mass_q.clone(), &PackageId::os20_core())],
+            vec![prop("MassBearing", "mass", mass_q.clone(), &PackageId::os20_core())],
             "Mixins.sysml",
             None,
             LifecycleStatus::Active,
@@ -310,10 +310,10 @@ fn build_core_snapshot(thing_comment: Option<&str>) -> OntologySnapshot {
             &[&mass_bearing],
             &["Structure", "Physics"],
             vec![
-                prop("position", length.clone(), &PackageId::os20_core()),
-                prop("orientation", real.clone(), &PackageId::os20_core()),
-                prop("geometry", t_core("GeometryBody"), &PackageId::os20_core()),
-                prop("material", string.clone(), &PackageId::os20_core()),
+                prop("PhysicalThing", "position", length.clone(), &PackageId::os20_core()),
+                prop("PhysicalThing", "orientation", real.clone(), &PackageId::os20_core()),
+                prop("PhysicalThing", "geometry", t_core("GeometryBody"), &PackageId::os20_core()),
+                prop("PhysicalThing", "material", string.clone(), &PackageId::os20_core()),
             ],
             "PhysicalThing.sysml",
             None,
@@ -490,6 +490,7 @@ fn build_core_snapshot(thing_comment: Option<&str>) -> OntologySnapshot {
                 "Manufacturing",
             ],
             vec![prop(
+                "ElectricMotor",
                 "inputPower",
                 power.clone(),
                 &PackageId::os20_electrical(),

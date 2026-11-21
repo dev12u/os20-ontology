@@ -1,0 +1,22 @@
+{
+  "format": "os20.semantic-property-bindings/v1",
+  "$schema_comment": "Maps fully qualified SysML attributes to canonical semantic property IDs. Never infer meaning from bare names alone.",
+  "bindings": [
+    {
+      "sysmlFeature": "@os20/core#MassBearing.mass",
+      "semanticId": "os20:property:equipment.dryMass"
+    },
+    {
+      "sysmlFeature": "PhysicsBodies::MassiveBody::mass",
+      "semanticId": "os20:property:equipment.dryMass"
+    },
+    {
+      "sysmlFeature": "ElectricalMachines::ElectricMotor::mass",
+      "semanticId": "os20:property:equipment.dryMass"
+    },
+    {
+      "sysmlFeature": "MechanicalPumps::RotaryPump::mass",
+      "semanticId": "os20:property:equipment.dryMass"
+    }
+  ]
+}

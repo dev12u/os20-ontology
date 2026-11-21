@@ -543,7 +543,23 @@ fn compile_one(
         }
 
         let mut properties = Vec::new();
+        let mut seen_features: BTreeSet<&str> = BTreeSet::new();
         for f in &el.features {
+            if !seen_features.insert(f.name.as_str()) {
+                diagnostics.push(
+                    OntologyDiagnostic::new(
+                        DiagnosticCode::DuplicateOwnedProperty,
+                        format!(
+                            "type `{}` declares feature `{}` more than once",
+                            id.as_str(),
+                            f.name
+                        ),
+                    )
+                    .with_element(id.as_element().clone())
+                    .with_package(pkg.clone()),
+                );
+                continue;
+            }
             let ty = match resolve(&f.ty) {
                 Some(t) => TypeRef::Bound { id: t },
                 None => {
@@ -554,7 +570,7 @@ fn compile_one(
                 }
             };
             properties.push(PropertyDecl {
-                id: PropertyId::catalog(&pkg, &f.name),
+                id: PropertyId::on_owner(&pkg, &el.name, &f.name),
                 ty,
                 multiplicity: Some(Multiplicity {
                     lower: 0,

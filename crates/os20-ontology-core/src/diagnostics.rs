@@ -63,8 +63,18 @@ pub enum DiagnosticCode {
     ArtifactRoleMismatch,
     /// Declared package export is not a known type (`OS20-E4026`).
     MissingPackageExport,
+    /// Same owner type declares the same feature name twice (`OS20-E4027`).
+    DuplicateOwnedProperty,
+    /// Unqualified property name matches multiple candidates (`OS20-E4028`).
+    AmbiguousPropertyReference,
+    /// Two defs claim one canonical semantic id with conflicting metadata (`OS20-E4029`).
+    ConflictingSemanticProperty,
+    /// Bound property quantity/dimension incompatible with semantic def (`OS20-E4030`).
+    SemanticQuantityMismatch,
     /// Comment-only / advisory (`OS20-W4001`).
     CommentOnlyChange,
+    /// Bare-name property lookup without a semantic binding (`OS20-W4002`).
+    AmbiguousLegacyPropertyName,
 }
 
 impl DiagnosticCode {
@@ -97,13 +107,21 @@ impl DiagnosticCode {
             Self::TestResultMissingExecution => "OS20-E4024",
             Self::ArtifactRoleMismatch => "OS20-E4025",
             Self::MissingPackageExport => "OS20-E4026",
+            Self::DuplicateOwnedProperty => "OS20-E4027",
+            Self::AmbiguousPropertyReference => "OS20-E4028",
+            Self::ConflictingSemanticProperty => "OS20-E4029",
+            Self::SemanticQuantityMismatch => "OS20-E4030",
             Self::CommentOnlyChange => "OS20-W4001",
+            Self::AmbiguousLegacyPropertyName => "OS20-W4002",
         }
     }
 
     /// Error vs warning.
     pub fn is_error(self) -> bool {
-        !matches!(self, Self::CommentOnlyChange)
+        !matches!(
+            self,
+            Self::CommentOnlyChange | Self::AmbiguousLegacyPropertyName
+        )
     }
 }
 

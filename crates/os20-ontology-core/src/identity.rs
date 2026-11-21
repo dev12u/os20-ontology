@@ -295,6 +295,15 @@ typed_element_id!(
     "Stable semantic domain identity (ontology-defined, versioned via its package release)."
 );
 
+impl PropertyId {
+    /// Owner-qualified property identity: `@pkg#Owner.feature`.
+    ///
+    /// Two owners declaring the same feature name get distinct ids.
+    pub fn on_owner(package: &PackageId, owner: &str, feature: &str) -> Self {
+        Self::catalog(package, &format!("{owner}.{feature}"))
+    }
+}
+
 /// Quantity type identity (physical quantity classifier).
 pub type QuantityTypeId = TypeId;
 
@@ -333,12 +342,18 @@ fn is_segment(s: &str) -> bool {
             .all(|c| c.is_ascii_alphanumeric() || c == '_' || c == '-')
 }
 
+/// Local names are identifier segments separated by single dots
+/// (`Thing`, `MassBearing.mass`). Each segment starts with a letter or `_`.
 fn is_local_name(s: &str) -> bool {
-    !s.is_empty()
-        && s.chars()
-            .next()
-            .is_some_and(|c| c.is_ascii_alphabetic() || c == '_')
-        && s.chars().all(|c| c.is_ascii_alphanumeric() || c == '_')
+    !s.is_empty() && s.split('.').all(is_local_segment)
+}
+
+fn is_local_segment(s: &str) -> bool {
+    let mut chars = s.chars();
+    chars
+        .next()
+        .is_some_and(|c| c.is_ascii_alphabetic() || c == '_')
+        && chars.all(|c| c.is_ascii_alphanumeric() || c == '_')
 }
 
 #[cfg(test)]
@@ -358,5 +373,30 @@ mod tests {
         let id = ElementId::new("@os20/core#Thing").unwrap();
         assert_eq!(id.local_name(), "Thing");
         assert_eq!(id.package().unwrap().as_str(), "@os20/core");
+    }
+
+    #[test]
+    fn local_names_accept_dotted_segments() {
+        for ok in ["Thing", "_x", "MassBearing.mass", "PhysicalThing.position", "A.b.c", "a1.b_2"] {
+            assert!(is_local_name(ok), "{ok} should be valid");
+            assert!(ElementId::new(format!("@os20/core#{ok}")).is_ok());
+        }
+    }
+
+    #[test]
+    fn local_names_reject_malformed() {
+        for bad in ["", ".a", "a.", "a..b", "1a", "a.1b", "a b", "a-b", "a.", "."] {
+            assert!(!is_local_name(bad), "{bad:?} should be invalid");
+        }
+        assert!(ElementId::new("@os20/core#a..b").is_err());
+    }
+
+    #[test]
+    fn property_on_owner_is_owner_qualified() {
+        let pkg = PackageId::os20_core();
+        let a = PropertyId::on_owner(&pkg, "A", "mass");
+        let b = PropertyId::on_owner(&pkg, "B", "mass");
+        assert_ne!(a, b);
+        assert_eq!(a.as_str(), "@os20/core#A.mass");
     }
 }

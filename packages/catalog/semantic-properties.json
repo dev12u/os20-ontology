@@ -1,0 +1,72 @@
+{
+  "format": "os20.semantic-properties/v1",
+  "$schema_comment": "Canonical engineering property semantics. Display names need not be unique; identity is the `id` field.",
+  "properties": [
+    {
+      "id": "os20:property:equipment.dryMass",
+      "name": "Mass",
+      "description": "Equipment dry mass",
+      "quantityKind": "mass",
+      "canonicalUnit": "Kilogram",
+      "categories": ["equipment"],
+      "sourcePackage": "@os20/core",
+      "sourceVersion": "0.1.0",
+      "legacySemanticIds": ["physical.mass"]
+    },
+    {
+      "id": "os20:property:shipment.grossMass",
+      "name": "Mass",
+      "description": "Shipment gross mass including packaging",
+      "quantityKind": "mass",
+      "canonicalUnit": "Kilogram",
+      "categories": ["shipment"],
+      "sourcePackage": "@os20/core",
+      "sourceVersion": "0.1.0",
+      "legacySemanticIds": []
+    },
+    {
+      "id": "os20:property:fluid.massFlowRate",
+      "name": "Mass flow rate",
+      "description": "Mass of fluid per unit time",
+      "quantityKind": "massFlowRate",
+      "canonicalUnit": "KilogramPerSecond",
+      "categories": ["fluid"],
+      "sourcePackage": "@os20/physics",
+      "sourceVersion": "0.1.0",
+      "legacySemanticIds": []
+    },
+    {
+      "id": "os20:property:mechanical.diameter",
+      "name": "Diameter",
+      "description": "Mechanical circular cross-section diameter",
+      "quantityKind": "length",
+      "canonicalUnit": "Metre",
+      "categories": ["mechanical"],
+      "sourcePackage": "@os20/physical",
+      "sourceVersion": "0.1.0",
+      "legacySemanticIds": ["geometry.diameter"]
+    },
+    {
+      "id": "os20:property:fluid.pressure",
+      "name": "Pressure",
+      "description": "Fluid pressure",
+      "quantityKind": "pressure",
+      "canonicalUnit": "Pascal",
+      "categories": ["fluid"],
+      "sourcePackage": "@os20/physics",
+      "sourceVersion": "0.1.0",
+      "legacySemanticIds": ["physical.pressure"]
+    },
+    {
+      "id": "os20:property:thermal.temperature",
+      "name": "Temperature",
+      "description": "Thermodynamic temperature",
+      "quantityKind": "temperature",
+      "canonicalUnit": "Kelvin",
+      "categories": ["thermal"],
+      "sourcePackage": "@os20/physics",
+      "sourceVersion": "0.1.0",
+      "legacySemanticIds": ["physical.temperature"]
+    }
+  ]
+}
